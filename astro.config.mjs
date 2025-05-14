@@ -1,13 +1,15 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
+		react(),
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'Imperios Antiguos',
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/Gabo2447/imperios' }],
 			sidebar: [
 				{
 					label: 'Guides',

@@ -24,3 +24,12 @@ div {
 p:hover, li:hover, h3:hover, h2:hover, h1:hover {
   background-color: #27272a;
 }
+
+a {
+  padding-left: 30px;
+}
+
+div.sl-flex.social-icons.astro-auneepjm {
+  display: flex;
+  align-items: center;
+}
