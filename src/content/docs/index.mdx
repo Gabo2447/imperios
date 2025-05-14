@@ -1,36 +1,91 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: Bienvenido a Imperios Antiguos
 template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: Explora las civilizaciones más fascinantes de la historia antigua. Un viaje interactivo a través de Grecia, Roma, China, Egipto y más, descubriendo sus legados, innovaciones y contribuciones que transformaron el mundo.
   image:
     file: ../../assets/houston.webp
-  actions:
-    - text: Example Guide
-      link: /guides/example/
-      icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import CivilizationCard from '../../components/CivilizationCard.astro';
+import Timeline from '../../components/Timeline.astro';
+import FeatureHighlight from '../../components/FeatureHighlight.astro';
 
-## Next steps
+## Nuestras Civilizaciones
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+<CardGrid>
+    <CivilizationCard 
+        title="Grecia" 
+        description="Cuna de la democracia, filosofía y arte clásico" 
+        link="/civilizaciones/grecia"
+        image="/images/grecia.jpg"
+    />
+    <CivilizationCard 
+        title="Roma" 
+        description="Imperio que definió el derecho y la ingeniería antigua" 
+        link="/civilizaciones/roma"
+        image="/images/roma.jpg"
+    />
+    <CivilizationCard 
+        title="China" 
+        description="Milenaria civilización de innovación y tradición" 
+        link="/civilizaciones/china"
+        image="/images/china.jpg"
+    />
+    <CivilizationCard 
+        title="Egipto" 
+        description="Maestros de arquitectura, astronomía y misterio" 
+        link="/civilizaciones/egipto"
+        image="/images/egipto.jpg"
+    />
 </CardGrid>
+
+## Línea del Tiempo de las Civilizaciones
+
+<Timeline 
+    events={[
+        {
+            date: "3000 a.C.",
+            title: "Primeras Civilizaciones",
+            description: "Mesopotamia y Egipto desarrollan escritura y agricultura"
+        },
+        {
+            date: "800 a.C.",
+            title: "Edad de Oro Griega",
+            description: "Desarrollo de la filosofía, democracia y arte clásico"
+        },
+        {
+            date: "27 a.C.",
+            title: "Imperio Romano",
+            description: "Fundación del Imperio Romano bajo Augusto"
+        },
+        {
+            date: "220 d.C.",
+            title: "Dinastía Han China",
+            description: "Expansión cultural y tecnológica de China"
+        }
+    ]}
+/>
+
+## Características Únicas
+
+<FeatureHighlight 
+    features={[
+        {
+            icon: "🏛️",
+            title: "Patrimonio Cultural",
+            description: "Exploramos las contribuciones más significativas de cada civilización"
+        },
+        {
+            icon: "📚",
+            title: "Contenido Detallado",
+            description: "Información profunda y verificada por historiadores"
+        },
+        {
+            icon: "🌍",
+            title: "Perspectiva Global",
+            description: "Entendiendo cómo estas civilizaciones moldearon el mundo moderno"
+        }
+    ]}
+/>

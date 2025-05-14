@@ -23,4 +23,11 @@ export default defineConfig({
 			],
 		}),
 	],
+	vite: {
+		resolve: {
+			alias: {
+				'@/*': '/src/'
+			}
+		}
+	}
 });

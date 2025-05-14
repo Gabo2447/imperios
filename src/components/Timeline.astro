@@ -1,0 +1,120 @@
+---
+interface TimelineEvent {
+    date: string;
+    title: string;
+    description: string;
+}
+
+interface Props {
+    events: TimelineEvent[];
+}
+
+const { events } = Astro.props;
+---
+
+<div class="timeline-container">
+    {events.map((event, index) => (
+        <div class={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
+            <div class="timeline-point"></div>
+            <div class="timeline-content">
+                <h3>{event.date.toUpperCase()}</h3>
+                <h4>{event.title}</h4>
+                <p>{event.description}</p>
+            </div>
+        </div>
+    ))}
+</div>
+
+<style>
+    :root {
+        --color-primary: #4a90e2;
+        --color-secondary: #50e3c2;
+        --color-background-card: #171717;
+        --color-border-top: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+        --spacing-sm: 8px;
+        --spacing-md: 16px;
+        --spacing-xl: 32px;
+        --border-radius-md: 12px;
+        --box-shadow-default: 0 2px 8px rgba(0,0,0,0.1);
+        --box-shadow-hover: 0 8px 20px rgba(0,0,0,0.2);
+        --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .timeline-container {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: var(--spacing-xl) 0;
+    }
+
+    /* Línea central con gradiente */
+    .timeline-container::before {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 3px;
+    }
+
+    .timeline-item {
+        position: relative;
+        width: 50%;
+        padding: var(--spacing-md);
+        box-sizing: border-box;
+    }
+
+    .timeline-item.left {
+        left: 0;
+        text-align: right;
+    }
+
+    .timeline-item.right {
+        left: 50%;
+        text-align: left;
+    }
+
+    /* Punto circular con sombra */
+    .timeline-point {
+        position: absolute;
+        top: 20px;
+        width: 20px;
+        height: 20px;
+        background: var(--color-primary);
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(74, 144, 226, 0.6);
+        border: 3px solid var(--color-background-card);
+        left: 100%;
+        transform: translateX(-50%);
+        transition: box-shadow 0.3s var(--transition-timing);
+    }
+
+    .timeline-item.right .timeline-point {
+        left: 0;
+        transform: translateX(-50%);
+    }
+
+    /* Tarjetas con borde superior gradiente */
+    .timeline-content {
+        background-color: var(--color-background-card);
+        border-radius: var(--border-radius-md);
+        padding: var(--spacing-md);
+        box-shadow: var(--box-shadow-default);
+        border-top: 6px solid transparent;
+        border-image: var(--color-border-top) 1;
+        transition: transform 0.4s var(--transition-timing), box-shadow 0.4s var(--transition-timing);
+        transform-origin: center bottom;
+        perspective: 1000px;
+    }
+
+    /* Hover: rotación y elevación */
+    .timeline-content:hover {
+        transform: rotateX(5deg) translateY(-8px);
+        box-shadow: var(--box-shadow-hover);
+    }
+
+    /* Tipografía */
+    .timeline-content h
